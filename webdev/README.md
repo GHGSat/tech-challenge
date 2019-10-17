@@ -14,8 +14,9 @@ plume image covers all the map;
 * **Scale** add a capability to scale the image to the browser width,
 * **Dynamic HTML** add capability to fold/unfold each elements of the frontend
 * **API** add a REST API allowing to upload the image, set the coordinates, and GET the resulting overlaid image
-* **Doc** add README instructions on how to generate sphinx documentation for this API
+* **Doc** document this API, and provide basic example usage
 * **Test** add unit-test of your choice to validate the core functionality of this web service
+* **Doc Generation**: add instructions on how to generate sphinx documentation for this API
 
 Above items are normally listed in ascending order of complexity. Please complete in-order. It's ok not to complete all of them, make your best.
 
