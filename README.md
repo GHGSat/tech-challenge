@@ -4,5 +4,5 @@ This repository hosts programming and scientific challenges on various technolog
 It provides you examples similar to what employees work on at GHGSat.
 It allows us to assess your level on different technologies. Theses challenges are used internally during our interview process.
 
-* [Web Developpment](/webdev/README.md)
+* [Web Development](/webdev/README.md)
 
