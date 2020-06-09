@@ -11,6 +11,11 @@ describe your contributions.
 We recognize the above is a lot of work, and we're not expecting everything to be completed, what we're looking for is 
 your best effort. They are listed in order of complexity, so we recommend you complete them in order.
 
+Please make your best to complete this assignment within 72h. Please provide following elements with your answer:
+
+* your source code pushed to a public repository (preferrably not as email attachment),
+* a README describing how to use/run your solution
+
 Good Luck!
 
 ## Challenge 1: Scale Rotation
