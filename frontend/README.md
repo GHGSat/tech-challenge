@@ -56,3 +56,27 @@ We also want to see the stuff around your code, so please try to include the fol
 As an added bonus (not required), add a way for customers to narrow their search down by
 drawing an area on the map and filtering the list of observations down to those inside
 the area
+
+### README.md
+
+this app is currently built on create-react-app 
+
+Inside the app directory, you can run several commands:
+
+  yarn start
+    Starts the development server.
+
+  yarn build
+    Bundles the app into static files for production.
+
+  yarn test
+    Starts the test runner.
+
+  yarn eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd app
+  yarn start
