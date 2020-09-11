@@ -8,44 +8,31 @@ import {
   Link
 } from "react-router-dom";
 
-import { WebMapView } from './components/Map'
+import { WebMapView } from './components/Map/Map'
+import { Header } from './components/Header'
+import { ListView } from './components/ListView'
+
+
 
 function App() {
   return (
     <Router>
     <div className="App">
-      <header className="App-header">
-        {/* LOGO */}
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* SEARCH BAR */}
-        <input type="search"></input>
-        {/* USER ADMIN */}
-      </header>
-      {/* NAV BAR ON LEFT SIDE */}
-      <aside>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/map">Map</Link>
-          <Link to="/map">List</Link>
-          <Link to="/cart">Cart</Link>
-          <Link to="/checkout">Checkout</Link>
-        </nav>
-      </aside>
-      {/* ROUTER CONTENT */}
+      <Header/>
       <main>
         <Switch>
-          <Route path="/map">
-          {/* { map } */}
-          <WebMapView />
-          </Route>
           <Route path="/list">
-            {/* { list } */}
+              <ListView />
           </Route>
           <Route path="/cart">
             {/* { cart } */}
           </Route>
           <Route path="/checkout">
             {/* { checkout } */}
+          </Route>
+          <Route path="/">
+            <WebMapView />
+            {/* TODO: ADD LOADING STATE */}
           </Route>
         </Switch>
       </main>

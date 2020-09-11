@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@xstate/react": "^0.8.1",
+    "xstate": "^4.13.0"
+  }
+}
