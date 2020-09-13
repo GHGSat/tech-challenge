@@ -1,36 +1,13 @@
 import React, { useEffect, useRef } from 'react'
 import { loadModules } from 'esri-loader';
-import { resolve } from 'path'
+//import { resolve } from 'path'
 
-import { createMachine, interpret } from 'xstate';
-import { Machine } from 'xstate';
-
-
-const mapMachine = Machine({})
-
-Machine({
-    id: 'gismap',
-    initial: 'inactive',
-    states: {
-      inactive: {
-        on: { TOGGLE: 'active' }
-      },
-      active: {
-        on: { TOGGLE: 'inactive' }
-      }
-    }
-  });
-
-
-export const WebMapView = () => {
+export const WebMapView = (props) => {
   const mapRef = useRef();
-
   useEffect(
     () => {
-    
-
       // lazy load the required ArcGIS API for JavaScript modules and CSS
-      loadModules(['esri/Map', 'esri/views/MapView', "esri/layers/GeoJSONLayer", "esri/support/popupUtils"], { css: true })
+      loadModules(['esri/Map', 'esri/views/MapView', "esri/layers/GeoJSONLayer"], { css: true })
       .then(([ArcGISMap, MapView, GeoJSONLayer]) => {
         const map = new ArcGISMap({
           basemap: 'topo-vector'
@@ -67,9 +44,9 @@ export const WebMapView = () => {
         function addToCart() {
             console.log('bada bing')
         }
-
+        // Template for the popup
         const template = {
-            title: "{OBJECTID}",
+            title: "ID: {OBJECTID}",
             content: [
                 {
                   type: "fields",
@@ -93,7 +70,8 @@ export const WebMapView = () => {
                 addToCartAction
             ]
         };
-                // load the map view at the ref's DOM node
+        
+        // load the map view at the ref's DOM node
         const view = new MapView({
           container: mapRef.current,
           map: map,
@@ -102,16 +80,15 @@ export const WebMapView = () => {
         });
 
         view.popup.on('trigger-action', (event) => {
-          // console.log(event)
-          // ADD TO CART
+          // ADD TO CART EVENT TRIGGER ON MAP
           if (event.action.id === "add-to-cart") {
-            console.log('add-to-cart')
+            addToCart()
           }
         })
 
         var geojsonLayer = new GeoJSONLayer({
             // json lives in the public folder atm
-            url: resolve(process.env.PUBLIC_URL + '/observations.json'),
+            url: props.geoJson.context.url,
             copyright: "",
             outFields: ["sensor", "description", "observed_on"],
             fields,
