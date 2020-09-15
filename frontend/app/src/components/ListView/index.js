@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { TablePagination, TableFooter } from '@material-ui/core';
-import { useLocation, useHistory } from "react-router-dom";
+import { useQuery } from '../../hooks/useQuery';
 
 const useStyles = makeStyles({
     table: {
@@ -16,42 +16,22 @@ const useStyles = makeStyles({
     },
 });
 
-function useQuery(param = "", def) {
-  let history = useHistory();
-  const data = new URLSearchParams(useLocation().search)
-  // set 
-  const setQuery = (value) => {
-    data.set(param, value)
-    history.push({ 
-      search: data.toString()
-    })
-  }
-
-  let value = data.get(param)
-  if (value === null) {
-    value = def
-  }
-  return [value, setQuery] 
-}
-
 const filterByPage = (data, page, rowsPerPage, setRows) => {
   const start = page * rowsPerPage;
   const end = page * rowsPerPage + rowsPerPage
   setRows(data.slice(start, end))
 }
 
-// TODO: implement router pagination by query params
-  
-export const ListView = ({ context: { geoJson }, call}) => {
-    const [page, setPage] = useQuery('page', 1)
+export const ListView = ({ context: { toDisplay }, action}) => {
+    const [page, setPage] = useQuery('page', 0)
     const [limit, setLimit] = useQuery('limit', 10)
     const [rows, setRows] = React.useState([])
     const classes = useStyles();
 
     React.useEffect(() => {
-      filterByPage(geoJson.features, page, limit, setRows)
-      // setPage(query.e)
-    }, [ page, limit ])
+      // when page or limit changes we envoke filter by page which calls slice on the large dataset
+      filterByPage(toDisplay.features, page, limit, setRows)
+    }, [ page, limit, toDisplay.features ])
 
     return <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="observation table">
@@ -71,7 +51,7 @@ export const ListView = ({ context: { geoJson }, call}) => {
             return (
             <TableRow key={i}>
               <TableCell component="th" scope="row">
-                {i + 1 + (page * limit)}
+                {properties.id + 1}
               </TableCell>
               <TableCell align="right">{properties.sensor}</TableCell>
               <TableCell align="right">{date}</TableCell>
@@ -88,7 +68,7 @@ export const ListView = ({ context: { geoJson }, call}) => {
                 onChangePage={(evt, p) => setPage(p) }
                 onChangeRowsPerPage={(evt) => setLimit(evt.target.value)}
                 rowsPerPage={limit}
-                count={geoJson.features.length}
+                count={rows.length}
                 page={Number(page)}/>
             </TableRow>
         </TableFooter>

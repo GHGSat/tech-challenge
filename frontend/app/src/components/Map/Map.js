@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { loadModules } from 'esri-loader';
 //import { resolve } from 'path'
+import { addToCart } from '../../state/geoJson'
 
 export const WebMapView = (props) => {
   const mapRef = useRef();
@@ -41,9 +42,6 @@ export const WebMapView = (props) => {
             id: "add-to-cart",
         };
 
-        function addToCart() {
-            console.log('bada bing')
-        }
         // Template for the popup
         const template = {
             title: "ID: {OBJECTID}",
@@ -82,35 +80,33 @@ export const WebMapView = (props) => {
         view.popup.on('trigger-action', (event) => {
           // ADD TO CART EVENT TRIGGER ON MAP
           if (event.action.id === "add-to-cart") {
-            addToCart()
+            addToCart(props.send, view.popup.selectedFeature.attributes.OBJECTID)
+            view.popup.close()
           }
         })
 
         var geojsonLayer = new GeoJSONLayer({
             // json lives in the public folder atm
-            url: props.geoJson.context.url,
+            url: props.url,
             copyright: "",
             outFields: ["sensor", "description", "observed_on"],
             fields,
             displayField: 'sensor',
             popupTemplate: template
         });
-
-        geojsonLayer.on('add-to-cart', (ev) => {
-          console.log(ev)
-        })
         
         map.add(geojsonLayer)
 
         return () => {
           if (view) {
             // destroy the map view
-            view.container = null;
+            // view.container = null;
+            // we dont want to do this right now
           }
         };
       });
     }
-  );
+  , [props.url]);
 
   return <div className="webmap" ref={mapRef} />;
 };

@@ -7,43 +7,45 @@ import {
   Route,
 } from "react-router-dom";
 
-import { WebMapView } from './components/Map/Map'
-import { Header } from './components/Header'
-import { ListView } from './components/ListView'
+import { WebMapView } from './components/Map/Map';
+import { Header } from './components/Header';
+import { ListView } from './components/ListView';
+import { Filter } from './components/Filter';
+import { Cart } from './components/Cart';
 
 import { useMachine } from '@xstate/react';
 import { geoJson } from './state/geoJson';
 
 function App() {
-  const [current, send] = useMachine(geoJson);
+  const [current, send] = useMachine(geoJson, { devTools: true });
 
   useEffect(() => {
-    send('FETCH')
-  }, [current.matches('idle')])
+    if (current.context.geoJson === null) {
+      send('FETCH')
+    }
+  }, [current, send])
 
   return (
     <Router>
     <div className="App">
       <Header/>
+      <Filter current={current} send={send} />
       <main>
         <Switch>
           <Route path="/list">
           { 
-            current.matches('resolved') ? 
+            current.context.toDisplay !== null ?
               <ListView context={current.context} action={send} /> 
               : "Loading" 
           }
           </Route>
           <Route path="/cart">
-            {/* { cart } */}
+              <Cart items={current.context.cart} send={send} />
           </Route>
-          <Route path="/checkout">
-            {/* { checkout } */}
-          </Route>
-          <Route path="/">
+          <Route path="/" exact>
             { 
-              current.matches('resolved') 
-                ?  <WebMapView geoJson={current} action={send} /> 
+              current.context.url !== null
+                ?  <WebMapView url={current.context.url} send={send} /> 
                 : "...loading geoJson" 
               }
            

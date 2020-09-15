@@ -1979,6 +1979,11 @@
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-1.1.0.tgz#1392799c266fca142622a720176f688beb74d181"
   integrity sha512-7toNyVlrl7vJnY3PU0eXIK1KWq8phfnEe1IwOdCMxkIl/BfUkUB2aaVs45R0LSx1qxHRnkqj0vlGtskUvKkNkA==
 
+"@xstate/inspect@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@xstate/inspect/-/inspect-0.1.1.tgz#9d7b4f66c353a30e665c759c00d700bfc707f560"
+  integrity sha512-1aRFHH8DBCud9YSc/YB5T1j2AzV86ZKrJJfMohHctLuNOsLAL++Pp6BE+FbixLyhOiP66yLFoJCY2/Gdn0j/VQ==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
