@@ -18,12 +18,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+
+const formatTime = (timestamp) => {
+    return 
+    new Date(timestamp).getMonth()
+}
+
 const SENSOR_TYPES = ["GHGSat-D", "GHGSat-C1", "GHGSat-C2", "GHGSat-C3"]
 /* TODO MAKE THESE COMPONENTS REUSABLE AND COMPOSABLE
 /* filter: date range, the type of sensor and observation description. */
 export const Filter = ({ current, send }) => {
     const classes = useStyles()
     const [sensor, setSensor] = useQuery('sensor', null)
+    const [to, setTo] = useQuery('to', Date.now())
+    const [from, setFrom] = useQuery('from', Date.now())
 
     useEffect(() => {
         if (current.matches('idle') && current.context.toDisplay !== null) {
@@ -39,7 +47,7 @@ export const Filter = ({ current, send }) => {
             label="From"
             type="datetime-local"
             defaultValue="2017-05-24T10:30"
-            value=""
+            value={from}
             className={classes.textField}
             InputLabelProps={{
                 shrink: true,
@@ -49,8 +57,11 @@ export const Filter = ({ current, send }) => {
             id="datetime-local"
             label="To"
             type="datetime-local"
-            onChange=""
-            value=""
+            onChange={(e) => {
+                console.log(new Date(e.target.value).getUTCSeconds())
+                // setFrom()
+            }}
+            value={to}
             defaultValue="2017-05-24T10:30"
             className={classes.textField}
             InputLabelProps={{
@@ -58,7 +69,7 @@ export const Filter = ({ current, send }) => {
             }}/>
 
     <FormControl className={classes.margin}>
-        <InputLabel htmlFor="sensor-filter">Age</InputLabel>
+        <InputLabel htmlFor="sensor-filter">{'Sensor'}</InputLabel>
         <NativeSelect
           value={sensor}
           id="sensor-filter"

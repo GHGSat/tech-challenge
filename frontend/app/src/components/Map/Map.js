@@ -106,7 +106,7 @@ export const WebMapView = (props) => {
         };
       });
     }
-  , [props.url]);
+  , [props.url, props.send]);
 
   return <div className="webmap" ref={mapRef} />;
 };

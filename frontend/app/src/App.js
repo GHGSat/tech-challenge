@@ -35,7 +35,7 @@ function App() {
           <Route path="/list">
           { 
             current.context.toDisplay !== null ?
-              <ListView context={current.context} action={send} /> 
+              <ListView current={current} items={current.context.toDisplay} send={send} /> 
               : "Loading" 
           }
           </Route>
@@ -48,8 +48,6 @@ function App() {
                 ?  <WebMapView url={current.context.url} send={send} /> 
                 : "...loading geoJson" 
               }
-           
-            {/* TODO: ADD LOADING STATE */}
           </Route>
         </Switch>
       </main>

@@ -41,9 +41,6 @@ export const Header = () => {
           <Link to="/cart">
             Cart
             </Link>
-          <Link to="/checkout">
-            Checkout
-          </Link>
        </Breadcrumbs>
     </nav>
     </Toolbar>

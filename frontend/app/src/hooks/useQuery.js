@@ -5,8 +5,8 @@ export function useQuery(param = "", def) {
     const history = useHistory()
     const data = new URLSearchParams(useLocation().search);
 
-    const setQuery = (value, param) => {
-        data.set(param, value);
+    const setQuery = (value, p = param) => {
+        data.set(p, value);
         history.push({ 
             search: data.toString()
         })

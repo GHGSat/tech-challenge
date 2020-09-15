@@ -16,22 +16,27 @@ const useStyles = makeStyles({
     },
 });
 
-const filterByPage = (data, page, rowsPerPage, setRows) => {
-  const start = page * rowsPerPage;
-  const end = page * rowsPerPage + rowsPerPage
-  setRows(data.slice(start, end))
+const filterByPage = (data, page = 0, rowsPerPage = 10) => {
+  const start = Number(page) * Number(rowsPerPage);
+  const end = Number(start) + Number(rowsPerPage)
+  console.log(data.slice(start, end))
+  return data.slice(start, end)
 }
 
-export const ListView = ({ context: { toDisplay }, action}) => {
+export const ListView = ({ current, items, send}) => {
     const [page, setPage] = useQuery('page', 0)
     const [limit, setLimit] = useQuery('limit', 10)
     const [rows, setRows] = React.useState([])
     const classes = useStyles();
-
+    // TODO REPLACE THIS GLOBABL FILTER
     React.useEffect(() => {
       // when page or limit changes we envoke filter by page which calls slice on the large dataset
-      filterByPage(toDisplay.features, page, limit, setRows)
-    }, [ page, limit, toDisplay.features ])
+      if (items.features.length) {
+        const filtered = filterByPage(items.features, page, limit, setRows)
+        console.log(current, limit, page)
+        setRows(filtered)
+      }
+    }, [ page, limit, items.features ])
 
     return <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="observation table">
@@ -57,7 +62,7 @@ export const ListView = ({ context: { toDisplay }, action}) => {
               <TableCell align="right">{date}</TableCell>
               <TableCell align="right">{properties.description}</TableCell>
               <TableCell align="right">
-                {/* <button> add to cart </button> */}
+                <button onClick={ () => send('ADD_TO_CART', { id: properties.id }) }> add to cart </button>
               </TableCell>
             </TableRow>
           )})}
@@ -67,8 +72,8 @@ export const ListView = ({ context: { toDisplay }, action}) => {
               <TablePagination 
                 onChangePage={(evt, p) => setPage(p) }
                 onChangeRowsPerPage={(evt) => setLimit(evt.target.value)}
-                rowsPerPage={limit}
-                count={rows.length}
+                rowsPerPage={Number(limit)}
+                count={items.features.length}
                 page={Number(page)}/>
             </TableRow>
         </TableFooter>

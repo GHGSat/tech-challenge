@@ -1,8 +1,5 @@
 import React from 'react';
 
-const checkout = (props) => {
-    
-}
 
 export const Cart = (props) => <ul>
         {
@@ -10,7 +7,10 @@ export const Cart = (props) => <ul>
                 { JSON.stringify({el}) }
             </li>)
         }
+        { props.items.length ?
         <button onClick={( () => props.send("CHECKOUT") )}>
             checkout
         </button>
+        : ("You have no items in your cart")
+        }
 </ul>
