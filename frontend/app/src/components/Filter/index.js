@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TextField, FormControl, InputLabel, NativeSelect } from '@material-ui/core';
 import { useQuery } from '../../hooks/useQuery';
@@ -20,8 +20,37 @@ const useStyles = makeStyles((theme) => ({
 
 
 const formatTime = (timestamp) => {
-    return 
-    new Date(timestamp).getMonth()
+    const date = new Date(timestamp)
+    console.log(date)
+    return { 
+        minutes: date.getMinutes(), 
+        hours: date.getHours(),
+        day: date.getDay(),
+        month: date.getMonth(),
+        year: date.getFullYear(),
+    }
+}
+
+const formatTimeString = ({ minutes, hours, day, month, year }) => {
+    return `${year}-${month}-${day}T${hours}:${minutes}`
+}
+
+const useTimeFilters = (to, from) => {
+    const [timeStrings, setTimeString] = useState({})
+
+    useEffect(() => {
+        const t = to === null ? new Date().valueOf() : to;
+        const f = from === null ? new Date().valueOf() : from;
+        
+        setTimeString({
+            to: formatTimeString(formatTime(t)),
+            from: formatTimeString(formatTime(f))
+        })
+        // todo dispatch event for time filters
+    }, [to, from])
+
+    return [timeStrings['to'], timeStrings['from']]
+       
 }
 
 const SENSOR_TYPES = ["GHGSat-D", "GHGSat-C1", "GHGSat-C2", "GHGSat-C3"]
@@ -30,25 +59,31 @@ const SENSOR_TYPES = ["GHGSat-D", "GHGSat-C1", "GHGSat-C2", "GHGSat-C3"]
 export const Filter = ({ current, send }) => {
     const classes = useStyles()
     const [sensor, setSensor] = useQuery('sensor', null)
-    const [to, setTo] = useQuery('to', Date.now())
-    const [from, setFrom] = useQuery('from', Date.now())
+    const [to, setTo] = useQuery('to', null)
+    const [from, setFrom] = useQuery('from', null)
+    const [tString, fString] = useTimeFilters(to, from)
 
     useEffect(() => {
+        console.log(to, from, tString, fString)
         if (current.matches('idle') && current.context.toDisplay !== null) {
             send('FILTER', {
-                payload: createFilter({ sensor })
+                payload: createFilter({ sensor, to, from })
             }) 
         }
-    }, [sensor])
+    }, [sensor, from, to])
 
     return <form className={classes.container} noValidate>
         <TextField
-            id="To"
+            id="from"
             label="From"
             type="datetime-local"
-            defaultValue="2017-05-24T10:30"
-            value={from}
+            defaultValue={fString}
+            value={fString}
             className={classes.textField}
+            onChange={(e) => {
+                e.preventDefault()
+                setFrom(new Date(e.target.value).valueOf())
+            }}
             InputLabelProps={{
                 shrink: true,
             }}/>
@@ -58,11 +93,11 @@ export const Filter = ({ current, send }) => {
             label="To"
             type="datetime-local"
             onChange={(e) => {
-                console.log(new Date(e.target.value).getUTCSeconds())
-                // setFrom()
+                e.preventDefault()
+                setTo(new Date(e.target.value).valueOf())
             }}
-            value={to}
-            defaultValue="2017-05-24T10:30"
+            value={tString}
+            defaultValue={tString}
             className={classes.textField}
             InputLabelProps={{
                 shrink: true,
@@ -77,6 +112,10 @@ export const Filter = ({ current, send }) => {
               evt.preventDefault()
               setSensor(evt.target.value, 'sensor')
           }}
+          InputLabelProps={{
+            shrink: true,
+         }}
+          
         >
           <option aria-label="None" value="" />
           { SENSOR_TYPES.map((type) => <option value={type}>{ type }</option>) }
