@@ -10,8 +10,14 @@ export const createFilter = ({
 }) => ({ to, from, description, sensor })
 
 const filters = {
-  to: (test, filter) => { return test < filter },
-  from: (test, filter) => test > filter,
+  to: (properties, filter) => {
+    console.log(properties.observed_on, filter) 
+    return Number(properties.observed_on) < Number(filter) 
+  },
+  from: (properties, filter) => {
+    console.log(Number(properties.observed_on), Number(filter), Number(properties.observed_on) > Number(filter))
+    return Number(properties.observed_on) > Number(filter)
+  },
   description: (test, filter) => test.contains(filter),
   sensor: (test, filter) => {
     return test === filter
@@ -23,13 +29,14 @@ const handleFilter = (context, event) => {
     for (let key of Object.keys(event.payload)) {
       if (
         event.payload[key] !== null 
-        && !filters[key](el.properties[key], event.payload[key]) 
+        && !filters[key](el.properties, event.payload[key]) 
       ) {
         return false;
       }
     }
     return true;
   })
+  console.log(features)
   return { features }
 }
 
@@ -50,7 +57,6 @@ export const geoJson = createMachine({
           target: 'resolved',
           actions: assign({
             toDisplay:  (context, event) => {
-
               return handleFilter(context, event)
             }
           })
@@ -114,6 +120,7 @@ export const geoJson = createMachine({
       }
     },
     clone: {
+      target: 'resolved',
       entry: assign({
           toDisplay: (_, event) => {
             return JSON.parse(JSON.stringify(_.geoJson))

@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { TablePagination, TableFooter } from '@material-ui/core';
 import { useQuery } from '../../hooks/useQuery';
+import { formatTimeString, formatTime } from '../../hooks/useTimeFilters';
 
 const useStyles = makeStyles({
     table: {
@@ -19,7 +20,6 @@ const useStyles = makeStyles({
 const filterByPage = (data, page = 0, rowsPerPage = 10) => {
   const start = Number(page) * Number(rowsPerPage);
   const end = Number(start) + Number(rowsPerPage)
-  console.log(data.slice(start, end))
   return data.slice(start, end)
 }
 
@@ -33,7 +33,6 @@ export const ListView = ({ current, items, send}) => {
       // when page or limit changes we envoke filter by page which calls slice on the large dataset
       if (items.features.length) {
         const filtered = filterByPage(items.features, page, limit, setRows)
-        console.log(current, limit, page)
         setRows(filtered)
       }
     }, [ page, limit, items.features ])
@@ -52,7 +51,7 @@ export const ListView = ({ current, items, send}) => {
         <TableBody>
            {/* TODO ADD LINK FOR URL PARAMATER FOR ID TO QUERY SPECIFIC ON CLICK */}
           { rows.length && rows.map(({ properties }, i) => {
-            const date = new Date(properties.observed_on).toTimeString()
+            const date = formatTimeString(formatTime(properties.observed_on))
             return (
             <TableRow key={i}>
               <TableCell component="th" scope="row">
