@@ -57,7 +57,7 @@ As an added bonus (not required), add a way for customers to narrow their search
 drawing an area on the map and filtering the list of observations down to those inside
 the area
 
-### README.md
+### INSTRUCTIONS
 
 this app is currently built on create-react-app 
 
@@ -80,3 +80,21 @@ We suggest that you begin by typing:
 
   cd app
   yarn start
+
+# Pages
+  this app is currently using react-router-dom, the url parameters in the url determine the filters, all though this feature is not complete.
+    - map
+    - list
+    - cart
+    - checkout
+
+# Xstate, 
+
+  all state machines are living in the `./state` where you will find a state chart that depicts the flow of events and actions.
+
+  There is currently multiple bugs and issues, it seems the dev tools break when you trigger a new state change.
+  
+#  Material-ui
+
+  All components are based on material ui, you'll find great documentation on their site.
+
