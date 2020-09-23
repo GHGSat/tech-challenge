@@ -20,14 +20,19 @@ Good Luck!
 
 ## Challenge 1: S-expression parser
 
-This challenge is close to what your first mission would look like working at GHGSat. This is thus a very good way for us to assess your skills, and for you to understand the software stack we are using.
+The objective here is to write an embedded application which parses a metadata file structure.
+
+What you need:
+- an ARM development board: Raspberry Pi, Beagleboard, ODroid, rooted Android phone, etc. If you are missing 
+such hardware at home, look at ARM qemu emulator.
+- the toolchain associated to this ARM platform, most of them are free to download on the web
 
 Write a simple C or C++ program which:
 
 * parses s-expression file given as input, it shall successfully parses [example.sexp](example.sexp).
-* print on stdout each element, in a nested fashion, its data-type and value
-* is built from a Makefile or CMake with x86 and ARM targets. Up to you to choose Makefile or CMake for this.
-* validate your program on an ARM board (Raspberry Pi, Beaglebone, your Android phone or tablet?). If you are missing 
+* print on stdout each element, in a nested fashion, its data-type and value. Ordering is not important.
+* write a Makefile or CMakefile to produce binaries for both x86 and ARM targets.
+* validate your program runs well on an ARM board (Raspberry Pi, Beaglebone, your Android phone or tablet?). If you are missing 
 such hardware or its associated toolchain at home, look at ARM qemu emulator and validate your program on it.
 
 Above items are normally listed in ascending order of complexity. It's ok not to complete all of them, make your best.
@@ -36,5 +41,4 @@ Provide following elements with your answer:
 * your source code pushed to a public repository (e.g. github; **not** as email attachment),
 * a README.md describing how to build your project,
 * some instructions how to run it on the chosen hardware or emulator environment
-* a quick review how you went through this assignment: method, research, problems you faced?
-* what would do to improve this software if you were given more time?
+* what would you do to improve this software if you were given more time?
