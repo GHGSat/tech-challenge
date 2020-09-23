@@ -33,7 +33,33 @@ Write a simple C or C++ program which:
 * print on stdout each element, in a nested fashion, its data-type and value. Ordering is not important.
 * write a Makefile or CMakefile to produce binaries for both x86 and ARM targets.
 * validate your program runs well on an ARM board (Raspberry Pi, Beaglebone, your Android phone or tablet?). If you are missing 
-such hardware or its associated toolchain at home, look at ARM qemu emulator and validate your program on it.
+such hardware or its associated toolchain at home, look at ARM qemu emulator or [Travis CI](https://docs.travis-ci.com/user/multi-cpu-architectures/) and run unit-tests against it.
+
+Above items are normally listed in ascending order of complexity. It's ok not to complete all of them, make your best.
+
+Provide following elements with your answer:
+* your source code pushed to a public repository (e.g. github; **not** as email attachment),
+* a README.md describing how to build your project,
+* some instructions how to run it on the chosen hardware or emulator environment
+* some unit-tests validating your parser against known patterns
+* what would you do to improve this software if you were given more time?
+
+
+## Challenge 2: Image Registration
+
+The objective here is to align a tuple of RGB and IR images on an ARM platform.
+
+Here are the requirements:
+- write a C++ application which:
+  - opens and reads the two images [hill-rgb-0007.png](datasets/hill-rgb-0007.png) and [hill-ir-rot-0007.png](datasets/datasets/hill-ir-rot-0007.png)
+  - allow user to crop image with a configurable ROI
+  - align/register the two cropped images together using OpenCV.
+  - save the aligned version of the images with a `-aligned.png` suffix
+  - save the matching keypoint file between the two input images, similar to [matching-keypoints.jpg](datasets/matching-keypoints.jpg)
+- unit-test: develop some unit-tests to validate your app's main functionalities
+- ARM: download and cross-compile the latest **stable** version of OpenCV. Build it for ARM platform. 
+- ARM: validate your unit-tests on this ARM platform.
+- container: create a docker image that can successfully run your unit-tests
 
 Above items are normally listed in ascending order of complexity. It's ok not to complete all of them, make your best.
 
