@@ -33,7 +33,7 @@ Write a simple C or C++ program which:
 * print on stdout each element, in a nested fashion, its data-type and value. Ordering is not important.
 * write a Makefile or CMakefile to produce binaries for both x86 and ARM targets.
 * validate your program runs well on an ARM board (Raspberry Pi, Beaglebone, your Android phone or tablet?). If you are missing 
-such hardware or its associated toolchain at home, look at ARM qemu emulator and validate your program on it.
+such hardware or its associated toolchain at home, look at ARM qemu emulator or [Travis CI](https://docs.travis-ci.com/user/multi-cpu-architectures/) and run unit-tests against it.
 
 Above items are normally listed in ascending order of complexity. It's ok not to complete all of them, make your best.
 
@@ -41,4 +41,5 @@ Provide following elements with your answer:
 * your source code pushed to a public repository (e.g. github; **not** as email attachment),
 * a README.md describing how to build your project,
 * some instructions how to run it on the chosen hardware or emulator environment
+* some unit-tests validating your parser against known patterns
 * what would you do to improve this software if you were given more time?
