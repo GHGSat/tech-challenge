@@ -4,9 +4,8 @@ These challenges are very close to what your first mission will look like workin
 way for us to assess your skills and methodology, and for you to understand our business logic and challenges.
 
 If for any reason, you don't feel you will have the time required to complete this challenge and keep a life balance, we 
-invite you to showcase a professional or personal project you are proud of. If your schedule allow, we provision 45
-minutes to discuss technically this project with you. It would be great - but not mandatory - if you can show us some
-code and describe your contributions.
+invite you to showcase a professional or personal project you are proud of. If your schedule allow, we provision 30
+minutes to discuss technically this project with you.
 
 Please make your best to complete this assignment within 48h. Please provide following elements with your answer:
 
