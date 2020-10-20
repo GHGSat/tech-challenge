@@ -51,14 +51,14 @@ The objective here is to align a tuple of RGB and IR images on an ARM platform.
 
 Here are the requirements:
 - write a C++ application which:
-  - opens and reads the two images [hill-rgb-0007.png](datasets/hill-rgb-0007.png) and [hill-ir-rot-0007.png](datasets/datasets/hill-ir-rot-0007.png)
+  - opens and reads the two images [hill-rgb-0007.png](datasets/hill-rgb-0007.png) and [hill-ir-rot-0007.png](datasets/hill-ir-rot-0007.png)
   - allow user to crop image with a configurable ROI
   - align/register the two cropped images together using OpenCV.
   - save the aligned version of the images with a `-aligned.png` suffix
   - save the matching keypoint file between the two input images, similar to [matching-keypoints.jpg](datasets/matching-keypoints.jpg)
 - unit-test: develop some unit-tests to validate your app's main functionalities
 - ARM: download and cross-compile the latest **stable** version of OpenCV. Build it for ARM platform. 
-- ARM: validate your unit-tests on this ARM platform.
+- unit-tests: validate your unit-tests run fine on this ARM platform.
 - container: create a docker image that can successfully run your unit-tests
 
 Above items are normally listed in ascending order of complexity. It's ok not to complete all of them, make your best.
