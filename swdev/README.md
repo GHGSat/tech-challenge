@@ -67,4 +67,5 @@ Provide following elements with your answer:
 * your source code pushed to a public repository (e.g. github; **not** as email attachment),
 * a README.md describing how to build your project,
 * some instructions how to run it on the chosen hardware or emulator environment
+* some unit-tests validating your parser against known patterns
 * what would you do to improve this software if you were given more time?
