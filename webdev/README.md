@@ -55,12 +55,12 @@ Good Luck!
 
 This challenge is very close to what your first mission will look like working at GHGSat. This is thus a very good way for us to assess your skills, and for you to understand the basics of our business. We're looking for your ability to:
 
- - understand and leverage frameworks (like django), libraries (that work with GIS data) and architectures (like REST)
+ - understand and leverage frameworks (like Django, Flask), libraries (that work with GIS data) and architectures (like REST)
  - create simple and clear solutions to complex problems
  - write maintainable code that others can understand and use
 
 
-Write a web API (no frontend) in Python 3 and Django 2+ and [PostGIS](https://postgis.net/) allowing a user to:
+Write a web API (no frontend) in Python3 and Django2+ or Flask and [PostGIS](https://postgis.net/) allowing a user to:
 
  1. Target: create targets given some co-ordinates (lat/long/elevation) and a name
  2. Observation: create observations of a target given an image file and a timestamp of when the image was captured. You are free to use whatever image and format you want here as a placeholder
