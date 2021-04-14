@@ -5,8 +5,8 @@ way for us to assess your skills and methodology, and for you to understand our 
 If you don't feel you will have the time required to complete this challenge, we invite you to showcase a professional or personal frontend project you are proud of.
 Prepare it and schedule a meeting with us to demo and review it, we'll want to see some code.
 
-We recognize the above is a lot of work, and we're not expecting everything to be completed, what we're looking for is
-your best effort. They are listed in order of complexity, so we recommend you complete them in order.
+Please **select one and only one challenge** from the list below, do not try to complete all of them. We recognize each challenge's requirements are a lot of work, and we're not expecting everything to be completed, do your best. Requirements are listed in order of complexity, so we recommend you complete them in order.
+
 Please make your best to complete this assignment within 72h. Please provide following elements with your answer:
 
 - your source code pushed to a public repository (preferrably not as email attachment),

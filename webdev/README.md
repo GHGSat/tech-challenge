@@ -1,5 +1,22 @@
 # Challenges: Web Developer
 
+These challenges are very close to what your first mission will look like working at GHGSat. This is thus a very good
+way for us to assess your skills and methodology, and for you to understand our business logic and challenges.
+
+If for any reason, you don't feel you will have the time required to complete this challenge and keep a life balance, we 
+invite you to showcase a professional or personal project you are proud of. We provision 45 min  to discuss technically 
+this project with you. It would be great - but not mandatory - if you can show us some code and describe your 
+contributions.
+
+Please **select one and only one challenge** from the list below, do not try to complete all of them. We recognize each challenge's requirements are a lot of work, and we're not expecting everything to be completed, do your best. Requirements are listed in order of complexity, so we recommend you complete them in order.
+
+Please make your best to complete this assignment within 3 days. Please provide following elements with your answer:
+
+* your source code pushed to a public repository (preferrably not as email attachment),
+* a README describing how to deploy, run and test your solution
+
+Good Luck!
+
 ## Challenge 1: Plume display
 
 This challenge is very close to what your first mission will look like working at GHGSat. This is thus a very good way for us to assess your skills, and for you to understand the basics of our business.

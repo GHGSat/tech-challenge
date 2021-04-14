@@ -7,6 +7,8 @@ If for any reason, you don't feel you will have the time required to complete th
 invite you to showcase a professional or personal project you are proud of. If your schedule allow, we provision 30
 minutes to discuss technically this project with you.
 
+Please **select one and only one challenge** from the list below, do not try to complete all of them. We recognize each challenge's requirements are a lot of work, and we're not expecting everything to be completed, do your best. Requirements are listed in order of complexity, so we recommend you complete them in order.
+
 Please make your best to complete this assignment within 48h. Please provide following elements with your answer:
 
 * a clear log of your activity, changes that were made, and what's left.
