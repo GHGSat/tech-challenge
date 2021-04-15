@@ -8,8 +8,7 @@ invite you to showcase a professional or personal project you are proud of. We p
 this project with you. It would be great - but not mandatory - if you can show us some code and describe your 
 contributions.
 
-We recognize the above is a lot of work, and we're not expecting everything to be completed, what we're looking for is 
-your best effort. They are listed in order of complexity, so we recommend you complete them in order.
+Please **select one and only one challenge** from the list below, do not try to complete all of them. We recognize each challenge's requirements are a lot of work, and we're not expecting everything to be completed, do your best. Requirements are listed in order of complexity, so we recommend you complete them in order.
 
 Please make your best to complete this assignment within 3 days. Please provide following elements with your answer:
 
