@@ -1,0 +1,9 @@
+Click
+numpy
+opencv-python
+pytest
+tox
+pytest-coverage
+pytest-runner
+twine
+wheel
