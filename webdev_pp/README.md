@@ -3,9 +3,9 @@
 These challenges are very close to what your first mission will look like working at GHGSat. This is thus a very good
 way for us to assess your skills and methodology, and for you to understand our business logic and challenges.
 
-If for any reason, you don't feel you will have the time required to complete this challenge and keep a life balance, we 
-invite you to showcase a professional or personal project you are proud of. We provision 45 min  to discuss technically 
-this project with you. It would be great - but not mandatory - if you can show us some code and describe your 
+If for any reason, you don't feel you will have the time required to complete this challenge and keep a life balance, we
+invite you to showcase a professional or personal project you are proud of. We provision 45 min  to discuss technically
+this project with you. It would be great - but not mandatory - if you can show us some code and describe your
 contributions.
 
 Please **select one and only one challenge** from the list below, do not try to complete all of them. We recognize each challenge's requirements are a lot of work, and we're not expecting everything to be completed, do your best. Requirements are listed in order of complexity, so we recommend you complete them in order.
@@ -35,10 +35,25 @@ Build a web application that fulfills the following criteria:
 - Allow the user to upload sites with a CSV file
 - When submitted, displays the start date and end date of overhead passes for the given site in a table.
   - An *overhead pass* for our purposes will be any time the elevation angle between an site and a satellite is greater than 0. [This website](https://www.celestis.com/resources/faq/what-are-the-azimuth-and-elevation-of-a-satellite/) provides a pretty good overview of what the elevation angle means.
-- BONUS: The application can filter the passes on other criteria. Examples could include: sun angle (filter out passes without any sunlight), cross-track angle (projection of position vector of satellite onto the plane perpindicular to the orbital plane) within a certain range, cloud coverage (using information fetched from an external weather API), etc. This filter could be applied before calculating the passes or after, depending on your preference.
+- BONUS: The application can filter the passes on other criteria. Examples could include: sun angle (filter out passes without any sunlight), cross-track angle (projection of vector from satellite to site onto the plane perpindicular to acceleration) within a certain range, cloud coverage (using information fetched from an external weather API), etc. This filter could be applied before calculating the passes or after, depending on your preference.
 
 ### Tips
 
 - Read the Orekit documentation carefully, you will find many useful tips there
 - Orekit needs some initialization data to be run. See the [FAQ](https://www.orekit.org/site-orekit-10.3/faq.html), especially the section *Runtime errors*.
 - Testing the accuracy of your predictor can be done through the website [Heavens Above](https://heavens-above.com/main.aspx). You can compare the accuracy of the your predictions of significant spacecrafts like the ISS with theirs using the same TLE (see the page *orbit* to see the TLE being used for their predictions). They should be quite similar.
+
+
+## Challenge 2: Optimization
+
+Consider the following function, the Rosenbrock "banana" function:
+
+```math
+f(x,y) = (1 - x)^2 + (y - x^2)^2
+```
+
+We would like to find the global minimum of this function.
+
+- Using the language of your choice, find the minimum of this function by gradient descent with an adaptive learning rate tuned via RMSProp. Please do not use any external libraries that will solve this problem, but using libraries for things like matrix multiplication is fine.
+
+- Output should be written to `stdout` in CSV format such that each row of the CSV corresponds to one iteration of gradient descent and the columns correspond to x and y respectively.
